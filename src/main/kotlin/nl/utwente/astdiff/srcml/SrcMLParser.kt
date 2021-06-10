@@ -22,7 +22,7 @@ class SrcMLParser(private val offset: Int) {
             val xmlToProcess = if (intendedFileInput.size < lines.size) (header + intendedFileInput) else
                 intendedFileInput
             val xmlStr = xmlToProcess.joinToString("\n")
-            File("pp_srcml.xml").writeText(xmlStr)
+//            File("pp_srcml.xml").writeText(xmlStr) // Uncomment for debugging purposes
             val xml = XmlDom.readXML(xmlStr.byteInputStream())
 //        val xml = XmlDom.readXML(input.byteInputStream()) // Uncomment in case of testing full file instead
             val parser = SrcMLParser(1) // Result from XML parser already has preprocessed parts cut out

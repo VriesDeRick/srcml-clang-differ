@@ -67,9 +67,10 @@ fun getToolOutput(producer: ExecutableParser, args: ClIArgs): String {
     val stripped = preprocessed.joinToString(System.lineSeparator())
     toolInput.write(stripped)
     toolInput.close()
-    if (producer == ExecutableParser.SRCML) {
-        File("stripped.cpp").writeText(stripped)
-    }
+    // Uncomment for debugging purposes
+//    if (producer == ExecutableParser.SRCML) {
+//        File("stripped.cpp").writeText(stripped)
+//    }
     // Transfer program output to a new inputstream to prevent buffer getting full
     val output = BufferedReader(InputStreamReader(process.inputStream)).lines().collect(Collectors.joining(System.lineSeparator()))
     val exit = process.waitFor()
